@@ -1,8 +1,14 @@
 <#import "template.ftl" as layout>
-<@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
-    <#if section = "header">
-    <#elseif section = "form">
+<@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??>
     <div class="modern-gitops-container">
+        <!-- Animated background particles -->
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
         <!-- Left Side - Branding -->
         <div class="modern-gitops-branding">
             <div class="brand-logo">
@@ -180,21 +186,15 @@
                 </#if>
                 
                 <#if realm.password && realm.registrationAllowed && !registrationDisabled??>
+                <div id="kc-registration" class="register-link">
+                    <span>${msg("noAccount")} <a tabindex="6" href="${url.registrationUrl}">${msg("doRegister")}</a></span>
+                </div>
+                </#if>
+                
                 <div class="login-footer">
                     <span class="footer-text">By signing in, you agree to our <a href="#" class="footer-link">Terms of Service</a> and <a href="#" class="footer-link">Privacy Policy</a></span>
                 </div>
-                </#if>
             </div>
         </div>
     </div>
-    
-    <!-- Animated background particles -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-    </#if>
 </@layout.registrationLayout>
